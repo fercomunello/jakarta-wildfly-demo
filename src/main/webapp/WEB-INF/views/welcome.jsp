@@ -1,7 +1,9 @@
 <%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page import="java.time.format.FormatStyle" %>
+
 <jsp:useBean id="currentDate" type="java.time.LocalDate" scope="request" />
 <jsp:useBean id="user" type="java.lang.String" scope="request" />
+<jsp:useBean id="textBlocks" type="java.lang.String" scope="request" />
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -21,12 +23,20 @@
         </style>
     </head>
     <body>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Duke_%28Java_mascot%29_waving.svg/568px-Duke_%28Java_mascot%29_waving.svg.png" width="64" height="100" alt="Dukes"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Duke_%28Java_mascot%29_waving.svg/568px-Duke_%28Java_mascot%29_waving.svg.png"
+             width="64" height="130" alt="Dukes"/>
 
         <h1>Hello, ${user}!</h1>
 
         <p><% DateTimeFormatter dateFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
             out.print(dateFormatter.format(currentDate)); %>
+        </p>
+
+        <p>${textBlocks}</p>
+
+        <p>
+            <b>Reference:</b>
+            <a>https://docs.oracle.com/en/java/javase/15/text-blocks/index.html</a>
         </p>
     </body>
 </html>
